@@ -1,6 +1,7 @@
 # (c) 2005 Ian Bicking and contributors; written for Paste (http://pythonpaste.org)
 # Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
 
+import os
 from email.MIMEText import MIMEText
 from email.MIMEMultipart import MIMEMultipart
 import smtplib
@@ -36,7 +37,7 @@ class EmailReporter(Reporter):
 
     to_addresses = None
     from_address = None
-    smtp_server = 'localhost'
+    smtp_server = os.environ.get('SMTP_SERVER', 'localhost')
     smtp_username = None
     smtp_password = None
     smtp_use_tls = False
